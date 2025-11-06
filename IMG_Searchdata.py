@@ -54,12 +54,13 @@ chain=prompt | llm
 upload_file=st.file_uploader("Upload the image",type=["jpg","png"])
 question=st.text_input("Enter the question")
 
-if uploaded_file and question:
-    image_b64 = encode_image(uploaded_file)
-    response = chain.invoke({"input": question, "image": image_b64})
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-    st.subheader("Response:")
-    st.write(response.content)
+if question:
+     image_b64 = encode_image(uploaded_file)
+     response = chain.invoke({"input": question, "image": image_b64})
+     st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+     st.subheader("Response:")
+     st.write(response.content)
+
 
 
 
