@@ -56,12 +56,10 @@ question=st.text_input("Enter the question")
 
 if question:
  image=encode_image(upload_file)
- 
-try:
  response=chain.invoke({"input":question,"image":image})
  st.write(response.content)
-except Exception as e:
- print(f"An error occurred: {e}")
+
+
 
 
 
