@@ -56,8 +56,15 @@ question=st.text_input("Enter the question")
 
 if question:
  image=encode_image(upload_file)
- response=chain.invoke({"input":question,"image":image})
-
+ try:
+    response = chain.invoke({"input": question, "image": image})
+except Exception as e:
+    print("-" * 60)
+    print("FATAL ERROR DETAILS:")
+    print(e)  # This will print the actual error message and HTTP code
+    print("-" * 60)
+    raise e 
  st.write(response.content)
+
 
 
