@@ -27,8 +27,8 @@ if not OPENAI_API_KEY:
  st.stop()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-embedings = OpenAIEmbeddings("OPENAI_API_KEY")
-llm = ChatOpenAI(model="gpt-4o", api_key=OPENAI_API_KEY)
+embedings = OpenAIEmbeddings(api_key="OPENAI_API_KEY")
+llm = ChatOpenAI(model="gpt-4o", api_key="OPENAI_API_KEY")
 
 prompt = ChatPromptTemplate.from_messages(
  [
@@ -59,4 +59,5 @@ if question:
  response=chain.invoke({"input":question,"image":image})
 
  st.write(response.content)
+
 
