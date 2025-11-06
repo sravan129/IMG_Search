@@ -58,10 +58,12 @@ if question:
  image=encode_image(upload_file)
  
 try:
-    response=chain.invoke({"input":question,"image":image})
+ response=chain.invoke({"input":question,"image":image})
+ st.write(response.content)
 except Exception as e:
-    print(f"An error occurred: {e}")
-st.write(response.content)
+ print(f"An error occurred: {e}")
+
+
 
 
 
